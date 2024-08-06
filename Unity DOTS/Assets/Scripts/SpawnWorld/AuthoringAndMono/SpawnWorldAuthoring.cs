@@ -11,6 +11,8 @@ public class SpawnWorldAuthoring : MonoBehaviour
     public int SpawnPortalCount;
     public GameObject PortalPrefab;
     public uint RandomSeed;
+    public GameObject EnemyPrefab;
+    public float EnemySpawnRate;
 
     public class SpawnWorldBaker : Baker<SpawnWorldAuthoring>
     {
@@ -21,13 +23,18 @@ public class SpawnWorldAuthoring : MonoBehaviour
             {
                 FieldDimensions = authoring.FieldDimensions,
                 SpawnPortalCount = authoring.SpawnPortalCount,
-                PortalPrefab =  GetEntity(authoring.PortalPrefab , TransformUsageFlags.Dynamic)
+                PortalPrefab =  GetEntity(authoring.PortalPrefab , TransformUsageFlags.Dynamic),
+                EnemyPrefab = GetEntity(authoring.EnemyPrefab , TransformUsageFlags.Dynamic),
+                EnemySpawnRate = authoring.EnemySpawnRate
             });
 
             AddComponent(entity, new SpawnWorldRandom
             {
                 value = Unity.Mathematics.Random.CreateFromIndex(authoring.RandomSeed)
-            }); 
+            });
+
+            AddComponent<EnemySpawnPointProperty>(entity);
+            AddComponent<EnemySpawnTimer>(entity);
         }
     }
 }

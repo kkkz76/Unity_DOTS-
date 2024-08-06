@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &959775338
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -260,10 +260,13 @@ MonoBehaviour:
   FieldDimensions:
     x: 20
     y: 20
-  SpawnPortalCount: 10
+  SpawnPortalCount: 100
   PortalPrefab: {fileID: 5494246554678517463, guid: 65e87eae9bcf20e4a92a08128df68486,
     type: 3}
-  RandomSeed: 0
+  RandomSeed: 1
+  EnemyPrefab: {fileID: 1953874822121461877, guid: 37e536fbadbe957448433949a24c66cb,
+    type: 3}
+  EnemySpawnRate: 0.1
 --- !u!4 &1236628283
 Transform:
   m_ObjectHideFlags: 0
